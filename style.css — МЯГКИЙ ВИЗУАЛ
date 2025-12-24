@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: #f7f4ef;
+  color: #2e2e2e;
+}
+
+#app {
+  padding: 24px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+h1, h2 {
+  font-weight: 500;
+}
+
+p {
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 14px;
+  background: #8fae9e;
+  color: white;
+  font-size: 16px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 100px;
+}
