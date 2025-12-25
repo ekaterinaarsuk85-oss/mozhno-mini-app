@@ -3,74 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>МОЖНО</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="visit()">
 
-<div id="app">
-
-  <!-- Welcome -->
+  <!-- Экран 1: Welcome -->
   <section id="welcome" class="screen active">
-    <h1>Здесь можно.</h1>
-    <p>
-      Можно есть.<br>
-      Можно быть.<br>
-      Без вины и запретов.
-    </p>
-    <button onclick="goTo('setup')">Начать спокойно</button>
+    <div id="welcomeText"></div>
+    <button id="startBtn" style="display:none" onclick="goTo('setup')">Начать спокойно</button>
   </section>
 
-  <!-- Setup -->
+  <!-- Экран 2: Setup -->
   <section id="setup" class="screen">
-    <h2>Немного о тебе</h2>
-
+    <input type="text" id="name" placeholder="Ваше имя">
     <input type="number" id="age" placeholder="Возраст">
-    <input type="number" id="height" placeholder="Рост (см)">
-    <input type="number" id="weight" placeholder="Вес (кг)">
-
-    <button onclick="saveProfile()">Продолжить</button>
+    <button onclick="goTo('home')">Продолжить</button>
   </section>
 
-  <!-- Home -->
+  <!-- Экран 3: Home -->
   <section id="home" class="screen">
-    <h2>Сегодня можно.</h2>
+    <h2>Сегодня можно</h2>
+    <div class="card" id="dailyQuote"></div>
 
-    <div id="status">В балансе</div>
+    <div class="actions">
+      <button onclick="addFood()">Добавить еду</button>
+      <button onclick="addNote()">Записать ощущение</button>
+      <button onclick="readMessage()">Сообщение дня</button>
+    </div>
 
-    <button onclick="goTo('food')">Добавить еду</button>
-    <button onclick="goTo('message')">Сообщение дня</button>
+    <div id="paywall" style="display:none">
+      <p>Хочешь остаться здесь?</p>
+      <button id="stayBtn" onclick="showPayment()">Остаться</button>
+    </div>
   </section>
 
-  <!-- Add Food -->
-  <section id="food" class="screen">
-    <h2>Что ты ела?</h2>
-
-    <textarea id="foodInput" placeholder="Можно без точности"></textarea>
-
-    <button onclick="addFood()">Добавить</button>
-  </section>
-
-  <!-- Message -->
-  <section id="message" class="screen">
-    <p id="dailyMessage"></p>
-    <button onclick="goTo('home')">Назад</button>
-  </section>
-
-  <!-- Paywall -->
-  <section id="paywall" class="screen">
-    <h2>Остаться в МОЖНО</h2>
-    <p>
-      Поддержка каждый день.<br>
-      Без давления.<br>
-      Без запретов.
-    </p>
-    <button>Подключить подписку</button>
-  </section>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
