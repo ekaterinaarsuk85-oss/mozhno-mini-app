@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Manrope', sans-serif;
   background: #FFF8F0;
@@ -35,13 +36,13 @@ input {
 
 button {
   display: block;
-  margin: 15px auto;
+  margin: 10px auto;
   background-color: #F7D9C4;
   color: #333;
   border: none;
   padding: 12px 25px;
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -93,5 +94,12 @@ button {
   font-weight: 500;
   color: #8B5E3C;
   margin: 0;
+}
+
+.subscription-card button {
+  width: 80%;
+  margin: 8px auto;
+  font-size: 16px;
+  background-color: #FFCC80;
 }
 
