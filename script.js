@@ -9,7 +9,7 @@ function goTo(screenId) {
   document.getElementById(screenId).classList.add('active');
 
   if(screenId === 'home') {
-    document.getElementById("dailyQuote").innerText = getDailyQuote();
+    loadHomeContent();
   }
 }
 
@@ -48,12 +48,12 @@ function checkPaywall() {
   }
 }
 
-// Кнопка "Остаться" (пока заглушка)
+// Кнопка "Остаться" (заглушка)
 function showPayment() {
-  alert("Здесь будет подключена оплата в рублях через ЮKassa");
+  alert("Все рецепты доступны только по подписке. Подключение оплаты будет позже.");
 }
 
-// Сообщения дня
+// Цитаты на 30 дней
 const dailyQuotes = [
   "Ты не слабая — ты человек, и это нормально.",
   "Можно хотеть сладкого, и это не делает тебя плохой.",
@@ -61,15 +61,77 @@ const dailyQuotes = [
   "Сегодня можно быть собой без идеала.",
   "Ты уже крута просто за то, что заботишься о себе.",
   "Иногда отдых важнее, чем ещё одно достижение.",
-  "Ты сильнее, чем думаешь, и мягче, чем кажешься."
+  "Ты сильнее, чем думаешь, и мягче, чем кажешься.",
+  "Можно позволить себе радость без чувства вины.",
+  "Слушай свои ощущения — это твой внутренний компас.",
+  "Ты создаёшь свой день своими решениями.",
+  "Каждый маленький шаг имеет значение.",
+  "Любовь к себе начинается с простых действий.",
+  "Не нужно быть идеальной, чтобы быть счастливой.",
+  "Твоя сила в мягкости и внимании к себе.",
+  "Сегодня можно просто дышать и быть здесь.",
+  "Ты заслуживаешь заботу о себе без условий.",
+  "Каждый день — новый шанс почувствовать радость.",
+  "Позволь себе быть настоящей, даже если это трудно.",
+  "Ты уже успешна, потому что заботишься о себе.",
+  "Мягкость — это тоже сила.",
+  "Сегодня можно отпустить все требования.",
+  "Ты лучше всего знаешь, что тебе нужно.",
+  "Маленькие радости складываются в большое счастье.",
+  "Ты достаточно, чтобы быть любимой.",
+  "Слушай себя, а не чужие ожидания.",
+  "Тело помнит заботу, а не лишения.",
+  "Сегодня ты можешь просто быть.",
+  "Ты заслуживаешь хорошее отношение к себе.",
+  "Любая забота о себе — это победа.",
+  "Ты уже на верном пути, потому что заботишься о себе."
 ];
 
 function getDailyQuote() {
-  const day = new Date().getDate();
-  return dailyQuotes[day % dailyQuotes.length];
+  const day = new Date().getDate(); 
+  return dailyQuotes[(day-1) % dailyQuotes.length];
 }
 
-// Анимация текста на welcome (строка за строкой)
+// Бесплатные рецепты с картинками
+const freeRecipes = [
+  { name: "Овсянка с фруктами", img: "https://i.ibb.co/4V4hH1N/oatmeal-fruits.jpg" },
+  { name: "Смузи с бананом и шпинатом", img: "https://i.ibb.co/6D9gYjK/smoothie-banana.jpg" },
+  { name: "Йогурт с ягодами", img: "https://i.ibb.co/3fG9pPZ/yogurt-berries.jpg" },
+  { name: "Салат с киноа и овощами", img: "https://i.ibb.co/BrKsm3T/quinoa-salad.jpg" },
+  { name: "Тост с авокадо", img: "https://i.ibb.co/N7gZP9R/avocado-toast.jpg" },
+  { name: "Каша гречневая с орехами", img: "https://i.ibb.co/Fm31yC9/grechka.jpg" },
+  { name: "Омлет с овощами", img: "https://i.ibb.co/khL4Z1V/omelet.jpg" },
+  { name: "Творожная запеканка", img: "https://i.ibb.co/7K1KdkT/cottage-cheese.jpg" },
+  { name: "Фруктовый салат", img: "https://i.ibb.co/mzL9XbY/fruit-salad.jpg" },
+  { name: "Сэндвич с индейкой и овощами", img: "https://i.ibb.co/xs0hB9v/sandwich.jpg" }
+];
+
+// Показ ежедневного рецепта
+function showDailyRecipe() {
+  const day = new Date().getDate();
+  const recipeToday = freeRecipes[(day-1) % freeRecipes.length];
+  const recipeDiv = document.getElementById("recipeList");
+  
+  recipeDiv.innerHTML = `
+    <div class="recipe-item">
+      <img src="${recipeToday.img}" alt="${recipeToday.name}">
+      <p>${recipeToday.name}</p>
+    </div>
+  `;
+}
+
+// Заглушка для всех рецептов (подписка)
+function showAllRecipes() {
+  alert("Все рецепты доступны только по подписке");
+}
+
+// Загрузка Home
+function loadHomeContent() {
+  document.getElementById("dailyQuote").innerText = getDailyQuote();
+  showDailyRecipe();
+}
+
+// Анимация текста на Welcome
 const welcomeLines = [
   "Ты здесь.",
   "Можно выдохнуть.",
