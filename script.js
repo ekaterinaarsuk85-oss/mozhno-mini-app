@@ -1,3 +1,4 @@
+
 // Макро данные
 let macroTotals = { protein:0, fat:0, carbs:0 };
 let chart;
@@ -63,7 +64,6 @@ const allRecipes = [
   { name: "Паста с томатами и базиликом", img: "https://i.ibb.co/1XzF0mR/pasta.jpg", free: false },
   { name: "Йогурт с ягодами", img: "https://i.ibb.co/yfzq6sF/yogurt-berries.jpg", free: false },
   { name: "Фриттата с овощами", img: "https://i.ibb.co/3yB0nxD/frittata.jpg", free: false }
-  // Можно добавить до 30 рецептов
 ];
 
 // Показ рецептов
@@ -132,10 +132,17 @@ function showWelcomeText() {
   }
 }
 
+// Кнопка подписки с выбором тарифа
+function subscribe(type) {
+  if(type === 'month') {
+    alert("Вы выбрали Месячную подписку (₽499). После одобрения ЮKassa будет доступна реальная оплата и все рецепты.");
+  } else if(type === 'year') {
+    alert("Вы выбрали Годовую подписку (₽4990). После одобрения ЮKassa будет доступна реальная оплата и все рецепты.");
+  }
+}
+
 // Запуск анимации после загрузки DOM
 window.onload = function() {
   showWelcomeText();
 }
-
-
 
