@@ -1,21 +1,17 @@
 
-// Макро данные
 let macroTotals = { protein:0, fat:0, carbs:0 };
 let chart;
 
-// Переход между экранами
 function goTo(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(screenId).classList.add('active');
 }
 
-// Переход на Home с загрузкой контента
 function goToHome() {
   goTo('home');
   loadHomeContent();
 }
 
-// 30 цитат на 30 дней
 const dailyQuotes = [
   "Ты не слабая — ты человек, и это нормально.",
   "Можно хотеть сладкого, и это не делает тебя плохой.",
@@ -54,7 +50,6 @@ function getDailyQuote() {
   return dailyQuotes[(day-1) % dailyQuotes.length];
 }
 
-// 30 рецептов (2 бесплатных)
 const allRecipes = [
   { name: "Овсянка с фруктами", img: "https://i.ibb.co/4V4hH1N/oatmeal-fruits.jpg", free: true },
   { name: "Смузи с бананом и шпинатом", img: "https://i.ibb.co/6D9gYjK/smoothie-banana.jpg", free: true },
@@ -66,7 +61,6 @@ const allRecipes = [
   { name: "Фриттата с овощами", img: "https://i.ibb.co/3yB0nxD/frittata.jpg", free: false }
 ];
 
-// Показ рецептов
 function showRecipes() {
   const recipeDiv = document.getElementById("recipeList");
   recipeDiv.innerHTML = '';
@@ -82,7 +76,6 @@ function showRecipes() {
   });
 }
 
-// Добавление еды
 function addFoodEntry() {
   const name = document.getElementById('foodName').value;
   const grams = parseInt(document.getElementById('foodGrams').value);
@@ -95,7 +88,6 @@ function addFoodEntry() {
   updateChart();
 }
 
-// Диаграмма макроэлементов
 function updateChart() {
   const ctx = document.getElementById('macroChart').getContext('2d');
   if(chart) chart.destroy();
@@ -112,13 +104,11 @@ function updateChart() {
   });
 }
 
-// Загрузка контента на Home
 function loadHomeContent() {
   document.getElementById('dailyQuote').innerText = getDailyQuote();
   showRecipes();
 }
 
-// Welcome анимация текста
 const welcomeLines = ["Ты здесь.","Можно выдохнуть.","Здесь не нужно быть правильной.","Можно просто есть."];
 let lineIndex = 0;
 function showWelcomeText() {
@@ -132,7 +122,6 @@ function showWelcomeText() {
   }
 }
 
-// Кнопка подписки с выбором тарифа
 function subscribe(type) {
   if(type === 'month') {
     alert("Вы выбрали Месячную подписку (₽499). После одобрения ЮKassa будет доступна реальная оплата и все рецепты.");
@@ -141,7 +130,6 @@ function subscribe(type) {
   }
 }
 
-// Запуск анимации после загрузки DOM
 window.onload = function() {
   showWelcomeText();
 }
