@@ -7,10 +7,12 @@ let visitsCount = 0;
 function goTo(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(screenId).classList.add('active');
+}
 
-  if(screenId === 'home') {
-    loadHomeContent();
-  }
+// Новый переход на Home с загрузкой контента
+function goToHome() {
+  goTo('home');       // переключаем экран
+  loadHomeContent();  // загружаем цитату и рецепт
 }
 
 // Добавление еды
@@ -125,7 +127,7 @@ function showAllRecipes() {
   alert("Все рецепты доступны только по подписке");
 }
 
-// Загрузка Home
+// Загрузка контента на Home
 function loadHomeContent() {
   document.getElementById("dailyQuote").innerText = getDailyQuote();
   showDailyRecipe();
