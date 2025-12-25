@@ -20,6 +20,7 @@
     <input type="number" id="age" placeholder="Возраст">
     <input type="number" id="weight" placeholder="Вес (кг)">
     <input type="number" id="height" placeholder="Рост (см)">
+    <input type="number" id="activity" placeholder="Активность в неделю (раз/нед)">
     <button onclick="goToHome()">Продолжить</button>
   </section>
 
@@ -28,25 +29,20 @@
     <h2>Сегодня можно</h2>
     <div class="card" id="dailyQuote"></div>
 
-    <div class="actions">
-      <button onclick="addFood()">Добавить еду</button>
-      <button onclick="addNote()">Записать ощущение</button>
-      <button onclick="readMessage()">Сообщение дня</button>
+    <div class="card">
+      <h3>Добавить еду</h3>
+      <input type="text" id="foodName" placeholder="Название продукта">
+      <input type="number" id="foodGrams" placeholder="Граммы">
+      <button onclick="addFoodEntry()">Добавить</button>
+      <canvas id="macroChart" width="300" height="300"></canvas>
     </div>
 
     <h3>Рецепты</h3>
-    <div id="recipeSection" class="card">
-      <div id="recipeList" class="recipe-grid"></div>
-      <button onclick="showAllRecipes()">Все рецепты (только для подписки)</button>
-    </div>
-
-    <div id="paywall" style="display:none">
-      <p>Хочешь остаться здесь?</p>
-      <button id="stayBtn" onclick="showPayment()">Остаться</button>
-    </div>
+    <div id="recipeList" class="recipe-grid"></div>
   </section>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
